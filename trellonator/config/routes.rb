@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :boards, shallow: true do
+    resources :lists do
+      resources :cards do
+        resources :comments, :checklists
+      end
+    end
+  end
+
 end
